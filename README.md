@@ -1,12 +1,11 @@
 # SQA Social Media
 
-Projeto educacional de qualidade de software com uma API Spring Boot, um frontend Next.js e testes automatizados em diferentes níveis.
+Projeto educacional de qualidade de software com uma API Spring Boot, um frontend Next.js e testes automatizados na API e no frontend.
 
 ## Visão Geral
 
 - `api/`: backend Java 17 com Spring Boot, autenticação, usuários, posts e curtidas.
 - `client/`: frontend Next.js/React que consome a API.
-- `e2e/`: testes Playwright para fluxos de interface e endpoints da API.
 
 Principais rotas da aplicação:
 
@@ -59,27 +58,8 @@ cd client
 npm test
 ```
 
-E2E/API com Playwright:
-
-```bash
-cd e2e
-npm install
-npx playwright install
-npm test
-```
-
-Para rodar apenas uma parte dos testes Playwright:
-
-```bash
-npm run test:e2e
-npm run test:api
-```
-
-Os testes Playwright esperam que a API esteja em `http://localhost:8080` e o frontend em `http://localhost:3000`.
-
 ## Documentações
 
 - [README da API](api/README.md)
 - [README do Frontend](client/README.md)
-- [README dos Testes (Playwright)](e2e/README.md)
 - [DummyJSON API Docs](https://dummyjson.com/docs)
