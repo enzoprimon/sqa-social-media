@@ -1,11 +1,3 @@
-/**
- * Testes Unitários — Componentes React (Jest + Testing Library)
- * Arquivo: src/Test/unit/components/components.test.tsx
- *
- * Teste 3 (SUCESSO) : PostCard renderiza título, corpo e botão de curtir.
- * Teste 4 (SUCESSO) : Header exibe "Entrar" e "Criar Conta" quando não autenticado.
- */
-
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";

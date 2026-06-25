@@ -1,11 +1,3 @@
-/**
- * Testes de Integração — Telas/Fluxos (Jest + Testing Library)
- * Arquivo: src/Test/integration/integration.test.tsx
- *
- * Teste 5 (SUCESSO) : SignIn exibe "Email é obrigatório" ao submeter com campo vazio.
- * Teste 6 (SUCESSO) : SignUp exibe "As senhas não coincidem" ao inserir senhas diferentes.
- */
-
 import React from "react";
 import { render, screen, fireEvent, waitFor, act } from "@testing-library/react";
 import "@testing-library/jest-dom";
@@ -22,14 +14,11 @@ jest.mock("@/service/auth/auth", () => ({
   authService: { signIn: jest.fn(), signUp: jest.fn() },
 }));
 
-// O Header é mockado para evitar botões duplicados na página
-// (o Header tem "Entrar" e "Criar Conta" que conflitam com os botões do formulário)
 jest.mock("@/components/Header", () => () => <div data-testid="mock-header" />);
 
 import SignIn from "@/app/signin/page";
 import SignUp from "@/app/signup/page";
 
-// TESTE 5 — SUCESSO
 it("SignIn deve exibir 'Email é obrigatório' ao submeter formulário com e-mail vazio", async () => {
   render(<SignIn />);
 
@@ -42,7 +31,6 @@ it("SignIn deve exibir 'Email é obrigatório' ao submeter formulário com e-mai
   });
 });
 
-// TESTE 6 — SUCESSO
 it("SignUp deve exibir 'As senhas não coincidem' quando as senhas são diferentes", async () => {
   render(<SignUp />);
 
