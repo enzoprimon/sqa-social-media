@@ -14,6 +14,7 @@ jest.mock("@/service/auth/auth", () => ({
   authService: { signIn: jest.fn(), signUp: jest.fn() },
 }));
 
+// eslint-disable-next-line react/display-name
 jest.mock("@/components/Header", () => () => <div data-testid="mock-header" />);
 
 import SignIn from "@/app/signin/page";
