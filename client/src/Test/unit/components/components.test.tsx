@@ -14,9 +14,14 @@ import { useAuth } from "@/contexts/AuthContext";
 import PostCard from "@/components/PostCard";
 import Header from "@/components/Header";
 
-// TESTE 3 — SUCESSO
 it("PostCard deve renderizar título, corpo do post e botão de curtir", () => {
-  const post = { id: 1, title: "Título do Post", body: "Conteúdo do post.", liked: false };
+  const post = {
+    id: 1,
+    title: "Título do Post",
+    body: "Conteúdo do post.",
+    liked: false,
+    reactions: { likes: 10, dislikes: 2 },
+  };
 
   render(<PostCard post={post} isAuthenticated={true} onLike={jest.fn()} />);
 
@@ -25,7 +30,21 @@ it("PostCard deve renderizar título, corpo do post e botão de curtir", () => {
   expect(screen.getByRole("button", { name: /curtir/i })).toBeInTheDocument();
 });
 
-// TESTE 4 — SUCESSO
+it("PostCard deve exibir o número de curtidas e descurtidas do post", () => {
+  const post = {
+    id: 2,
+    title: "Post com Reações",
+    body: "Corpo do post.",
+    liked: false,
+    reactions: { likes: 42, dislikes: 7 },
+  };
+
+  render(<PostCard post={post} isAuthenticated={false} onLike={jest.fn()} />);
+
+  expect(screen.getByTestId("likes-count")).toHaveTextContent("42");
+  expect(screen.getByTestId("dislikes-count")).toHaveTextContent("7");
+});
+
 it("Header deve exibir botões 'Entrar' e 'Criar Conta' quando não autenticado", () => {
   (useAuth as jest.Mock).mockReturnValue({ isAuthenticated: false, logout: jest.fn() });
 
