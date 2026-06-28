@@ -121,7 +121,7 @@ jobs:
             STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
               -X POST http://localhost:8080/auth/signin \
               -H "Content-Type: application/json" \
-              -d '{"email":"health@check.com","password":"x"}')
+              -d '{"email":"health@check.com","password":"x"}' || echo "000")
             if [ "$STATUS" != "000" ]; then
               break
             fi
@@ -131,7 +131,7 @@ jobs:
       - name: Aguardar o client estar disponível
         run: |
           for i in $(seq 1 30); do
-            STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000)
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000 || echo "000")
             if [ "$STATUS" = "200" ] || [ "$STATUS" = "304" ]; then
               break
             fi
