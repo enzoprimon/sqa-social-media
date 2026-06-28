@@ -23,7 +23,9 @@ jobs:
 
       - name: Executar testes Maven
         working-directory: api
-        run: ./mvnw test --batch-mode
+        run: |
+          chmod +x mvnw
+          ./mvnw test --batch-mode
 
   client-unit-tests:
     name: Testes Unitários – Client (Jest)
@@ -80,7 +82,9 @@ jobs:
 
       - name: Compilar a API
         working-directory: api
-        run: ./mvnw package -DskipTests --batch-mode
+        run: |
+          chmod +x mvnw
+          ./mvnw package -DskipTests --batch-mode
 
       - name: Iniciar a API em background
         working-directory: api
